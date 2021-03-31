@@ -1,0 +1,28 @@
+server:
+  port: 8781
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: order-server
+  redis:
+    database: 0
+    port: 6379
+    host: 192.168.122.1
+    timeout: 2000
+#自定义负载均衡策略(这里是随机策略)，默认是轮询策略
+product-server:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+feign:
+  hystrix:
+    #使用Feign中的Hystrix需要手动开启熔断降级（旧版本默认开启，但新版本默认关闭的）
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        #修改调用超时时间(2秒)
+        readTimeout: 2000
