@@ -10,7 +10,7 @@ spring:
   redis:
     database: 0
     port: 6379
-    host: 192.168.122.1
+    host: 192.168.29.128
     timeout: 2000
 #自定义负载均衡策略(这里是随机策略)，默认是轮询策略
 product-server:
